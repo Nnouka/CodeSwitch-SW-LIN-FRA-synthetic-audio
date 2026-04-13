@@ -1,0 +1,14 @@
+PUBLISHING READINESS
+====================
+text_jsonl: True
+audio_manifest: True
+splits: True
+datacard: True
+hf_dataset_info: True
+readme: True
+audio_dir_exists: True
+
+NEXT:
+1) Human audit on sampled 10% clips
+2) Compute downstream ASR/retrieval deltas
+3) Publish to HF and Kaggle

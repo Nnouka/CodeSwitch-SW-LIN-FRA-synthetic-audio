@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Optional Cognito resources for reviewer access.
+
+Parameters:
+  ProjectName:
+    Type: String
+  Environment:
+    Type: String
+
+Resources:
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: !Sub ${ProjectName}-${Environment}-reviewers
+      AutoVerifiedAttributes:
+        - email
+      UsernameAttributes:
+        - email
+
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      UserPoolId: !Ref UserPool
+      ClientName: !Sub ${ProjectName}-${Environment}-web-client
+      GenerateSecret: false
+
+  ReviewerGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: reviewer
+      UserPoolId: !Ref UserPool
+
+  AdminGroup:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: admin
+      UserPoolId: !Ref UserPool
+
+Outputs:
+  UserPoolId:
+    Value: !Ref UserPool
+  UserPoolClientId:
+    Value: !Ref UserPoolClient

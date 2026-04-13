@@ -1,0 +1,75 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Root stack for Lilics community data platform.
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: lilics
+  Environment:
+    Type: String
+    AllowedValues: [dev, stage, prod]
+    Default: dev
+  DomainName:
+    Type: String
+    Default: lilics.yinyangr.com
+  HostedZoneName:
+    Type: String
+    Default: yinyangr.com
+  CertificateArn:
+    Type: String
+    Description: ACM certificate ARN in us-east-1 for CloudFront.
+  EnableCognito:
+    Type: String
+    AllowedValues: ['true', 'false']
+    Default: 'false'
+
+Conditions:
+  UseCognito: !Equals [!Ref EnableCognito, 'true']
+
+Resources:
+  StorageStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: storage.yaml
+      Parameters:
+        ProjectName: !Ref ProjectName
+        Environment: !Ref Environment
+
+  ApiStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: api.yaml
+      Parameters:
+        ProjectName: !Ref ProjectName
+        Environment: !Ref Environment
+        RawAudioBucketName: !GetAtt StorageStack.Outputs.RawAudioBucketName
+
+  CdnDnsStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: cdn-dns.yaml
+      Parameters:
+        ProjectName: !Ref ProjectName
+        Environment: !Ref Environment
+        DomainName: !Ref DomainName
+        HostedZoneName: !Ref HostedZoneName
+        CertificateArn: !Ref CertificateArn
+        WebBucketName: !GetAtt StorageStack.Outputs.WebBucketName
+        LogsBucketName: !GetAtt StorageStack.Outputs.LogsBucketName
+
+  AuthStack:
+    Type: AWS::CloudFormation::Stack
+    Condition: UseCognito
+    Properties:
+      TemplateURL: auth.yaml
+      Parameters:
+        ProjectName: !Ref ProjectName
+        Environment: !Ref Environment
+
+Outputs:
+  CloudFrontDomainName:
+    Value: !GetAtt CdnDnsStack.Outputs.CloudFrontDomainName
+  WebsiteURL:
+    Value: !Sub https://${DomainName}
+  ApiUrl:
+    Value: !GetAtt ApiStack.Outputs.ApiUrl

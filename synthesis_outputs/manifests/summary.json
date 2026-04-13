@@ -1,0 +1,21 @@
+{
+  "date": "2026-04-13",
+  "text_records": 9000,
+  "audio_records": 623,
+  "text_split": {
+    "train": 7200,
+    "dev": 900,
+    "test": 900
+  },
+  "audio_split": {
+    "train": 498,
+    "dev": 62,
+    "test": 63
+  },
+  "anti_leakage_ok": true,
+  "kpi": {
+    "avg_cs_acceptability": 0.757,
+    "avg_mos_proxy": 4.4,
+    "avg_asr_backtrans_wer": 0.12
+  }
+}

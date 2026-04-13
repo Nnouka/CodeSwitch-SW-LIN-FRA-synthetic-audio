@@ -1,0 +1,274 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: API and data resources for Lilics backend.
+
+Parameters:
+  ProjectName:
+    Type: String
+  Environment:
+    Type: String
+  RawAudioBucketName:
+    Type: String
+
+Resources:
+  ContributorSessionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub ${ProjectName}-ContributorSessions-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: sessionId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: sessionId
+          KeyType: HASH
+
+  SubmissionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub ${ProjectName}-Submissions-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: submissionId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: submissionId
+          KeyType: HASH
+
+  PromptsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub ${ProjectName}-Prompts-${Environment}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: promptId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: promptId
+          KeyType: HASH
+
+  Api:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: !Sub ${ProjectName}-${Environment}-api
+      ProtocolType: HTTP
+      CorsConfiguration:
+        AllowMethods: [GET, POST, OPTIONS]
+        AllowOrigins: ['*']
+        AllowHeaders: ['content-type', 'authorization']
+
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: DataAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:PutItem
+                  - dynamodb:GetItem
+                  - dynamodb:UpdateItem
+                  - dynamodb:Query
+                Resource:
+                  - !GetAtt ContributorSessionsTable.Arn
+                  - !GetAtt SubmissionsTable.Arn
+                  - !GetAtt PromptsTable.Arn
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                Resource: !Sub arn:aws:s3:::${RawAudioBucketName}/*
+
+  CreateSessionFn:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub ${ProjectName}-CreateSession-${Environment}
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 15
+      Code:
+        ZipFile: |
+          exports.handler = async () => {
+            return {
+              statusCode: 200,
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({ message: 'CreateSession endpoint stub' })
+            };
+          };
+
+  GetNextPromptFn:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub ${ProjectName}-GetNextPrompt-${Environment}
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 15
+      Code:
+        ZipFile: |
+          exports.handler = async () => {
+            return {
+              statusCode: 200,
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({
+                promptId: 'stub-prompt-001',
+                text: 'Eleza changamoto ya jamii yenu kwa lugha mchanganyiko wa kila siku.',
+                languageMix: 'fra-swa-lin'
+              })
+            };
+          };
+
+  CreateUploadUrlFn:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub ${ProjectName}-CreateUploadUrl-${Environment}
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 15
+      Code:
+        ZipFile: |
+          exports.handler = async () => {
+            return {
+              statusCode: 200,
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({
+                uploadUrl: 'https://example-presigned-url.invalid',
+                objectKey: 'raw/2026/04/13/stub-audio.webm'
+              })
+            };
+          };
+
+  FinalizeSubmissionFn:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub ${ProjectName}-FinalizeSubmission-${Environment}
+      Runtime: nodejs20.x
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 15
+      Code:
+        ZipFile: |
+          exports.handler = async () => {
+            return {
+              statusCode: 200,
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({
+                submissionId: 'stub-submission-001',
+                status: 'queued'
+              })
+            };
+          };
+
+  ApiIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref Api
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt CreateSessionFn.Arn
+      PayloadFormatVersion: '2.0'
+
+  GetNextPromptIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref Api
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt GetNextPromptFn.Arn
+      PayloadFormatVersion: '2.0'
+
+  CreateUploadUrlIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref Api
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt CreateUploadUrlFn.Arn
+      PayloadFormatVersion: '2.0'
+
+  FinalizeSubmissionIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref Api
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !GetAtt FinalizeSubmissionFn.Arn
+      PayloadFormatVersion: '2.0'
+
+  CreateSessionRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref Api
+      RouteKey: POST /sessions
+      Target: !Sub integrations/${ApiIntegration}
+
+  GetNextPromptRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref Api
+      RouteKey: GET /prompts/next
+      Target: !Sub integrations/${GetNextPromptIntegration}
+
+  CreateUploadUrlRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref Api
+      RouteKey: POST /uploads/presign
+      Target: !Sub integrations/${CreateUploadUrlIntegration}
+
+  FinalizeSubmissionRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref Api
+      RouteKey: POST /submissions
+      Target: !Sub integrations/${FinalizeSubmissionIntegration}
+
+  Stage:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      ApiId: !Ref Api
+      StageName: '$default'
+      AutoDeploy: true
+
+  AllowInvokeFromApi:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref CreateSessionFn
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${Api}/*/*/*
+
+  AllowInvokeGetNextPrompt:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref GetNextPromptFn
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${Api}/*/*/*
+
+  AllowInvokeCreateUploadUrl:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref CreateUploadUrlFn
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${Api}/*/*/*
+
+  AllowInvokeFinalizeSubmission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref FinalizeSubmissionFn
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${Api}/*/*/*
+
+Outputs:
+  ApiUrl:
+    Value: !GetAtt Api.ApiEndpoint

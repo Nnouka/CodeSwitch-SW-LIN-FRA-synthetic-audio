@@ -1,0 +1,8 @@
+[
+  { "ParameterKey": "ProjectName", "ParameterValue": "lilics" },
+  { "ParameterKey": "Environment", "ParameterValue": "stage" },
+  { "ParameterKey": "DomainName", "ParameterValue": "lilics.yinyangr.com" },
+  { "ParameterKey": "HostedZoneName", "ParameterValue": "yinyangr.com" },
+  { "ParameterKey": "CertificateArn", "ParameterValue": "arn:aws:acm:us-east-1:123456789012:certificate/replace-me" },
+  { "ParameterKey": "EnableCognito", "ParameterValue": "true" }
+]

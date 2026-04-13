@@ -1,0 +1,160 @@
+:root {
+  background: #f5f8fa;
+  color: #10232f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.layout {
+  min-height: 100vh;
+}
+
+.header {
+  background: #0b3a53;
+  color: #fff;
+  height: auto;
+  line-height: normal;
+  padding: 0.7rem 0.85rem;
+}
+
+.header-shell {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1120px;
+  width: 100%;
+}
+
+.header-brand {
+  align-items: center;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.mobile-menu-trigger {
+  color: #fff !important;
+  font-size: 1.1rem;
+  height: 40px;
+  width: 40px;
+}
+
+.page {
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 1rem 0.85rem 1.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+form {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+}
+
+button {
+  background: #0b3a53;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.recording-indicator {
+  align-items: center;
+  display: flex;
+  gap: 0.6rem;
+}
+
+.recording-dot {
+  background: #64748b;
+  border-radius: 9999px;
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+}
+
+.recording-dot.live {
+  background: #ef4444;
+}
+
+.recording-dot.countdown {
+  background: #f59e0b;
+}
+
+.countdown-number {
+  color: #0b3a53;
+  font-size: 84px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 0.85rem 0.7rem 1.2rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions > * {
+    width: 100%;
+  }
+
+  audio {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 0 1rem;
+  }
+
+  .header-shell {
+    height: 56px;
+  }
+
+  .header .ant-menu-horizontal {
+    border-bottom: none;
+    height: 100%;
+    line-height: 56px;
+  }
+
+  .header .ant-menu-horizontal > .ant-menu-item,
+  .header .ant-menu-horizontal > .ant-menu-submenu {
+    border-radius: 0;
+    height: 100%;
+    line-height: 56px;
+    margin-block: 0;
+  }
+
+  .page {
+    padding: 1.5rem 1.25rem 2rem;
+  }
+}

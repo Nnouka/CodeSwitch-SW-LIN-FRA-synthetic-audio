@@ -1,0 +1,38 @@
+{
+  "dataset_name": "cs-text-audio-fra-swa-lin-v1",
+  "version": "1.0.0",
+  "date": "2026-04-13",
+  "language_codes": [
+    "fra",
+    "swa",
+    "lin"
+  ],
+  "license": "CC-BY-4.0",
+  "description": "Code-switched French-Swahili-Lingala text and speech synthesized from real source corpora.",
+  "source_attribution": [
+    {
+      "dataset": "Gamayun Congolese Swahili-French",
+      "usage": "parallel text synthesis"
+    },
+    {
+      "dataset": "Google WaxalNLP",
+      "usage": "Lingala/Swahili speech references"
+    },
+    {
+      "dataset": "Common Voice French",
+      "usage": "French speech/text references"
+    },
+    {
+      "dataset": "HateSpeech Kenya",
+      "usage": "transfer CS pattern priors"
+    }
+  ],
+  "quality_targets": {
+    "naturalness_reject_rate_max": 0.1,
+    "lid_accuracy_min": 0.95,
+    "audio_qc": {
+      "vad_ratio_min": 0.6,
+      "clipping_ratio_max": 0.005
+    }
+  }
+}

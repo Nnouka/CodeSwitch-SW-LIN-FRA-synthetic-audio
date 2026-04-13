@@ -1,0 +1,34 @@
+{
+  "text_split": {
+    "num_examples": 9000,
+    "features": {
+      "id": "string",
+      "text": "string",
+      "tokens": "sequence<string>",
+      "lang_tags": "sequence<string>",
+      "matrix_lang": "string",
+      "switch_points": "sequence<int32>",
+      "quality": {
+        "grammar_score": "float32",
+        "toxicity_flag": "bool",
+        "cs_acceptability": "float32"
+      }
+    },
+    "checksum": "60581fdd7814b748"
+  },
+  "audio_split": {
+    "num_examples": 623,
+    "features": {
+      "id": "string",
+      "audio": {
+        "array": "float32",
+        "sampling_rate": 16000
+      },
+      "transcript": "string",
+      "lang_spans": "sequence<struct>",
+      "speaker_profile": "struct",
+      "quality": "struct"
+    },
+    "checksum": "1920662f398f74a9"
+  }
+}
