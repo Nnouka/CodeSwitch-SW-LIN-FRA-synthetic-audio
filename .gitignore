@@ -7,3 +7,11 @@ synthesis_outputs/audio/
 synthesis_outputs/manifest/
 synthesis_outputs/text/
 report.prompt.md
+*.synctex.gz
+*.log
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
