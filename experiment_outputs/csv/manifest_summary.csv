@@ -1,0 +1,2 @@
+date,text_records,audio_records,anti_leakage_ok,text_split.train,text_split.dev,text_split.test,audio_split.train,audio_split.dev,audio_split.test,kpi.avg_cs_acceptability,kpi.avg_mos_proxy,kpi.avg_asr_backtrans_wer
+2026-04-13,9000,623,True,7200,900,900,498,62,63,0.757,4.4,0.12

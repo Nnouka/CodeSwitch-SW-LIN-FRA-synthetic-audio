@@ -1,0 +1,4 @@
+comparison,metric,delta,ci_low,ci_high,p_value
+tfidf_word_bigram vs tfidf_word_bigram,MRR,0.0,0.0,0.0,1.0
+tfidf_word_bigram vs tfidf_word_bigram,nDCG@5,0.0,0.0,0.0,1.0
+tfidf_word_bigram vs tfidf_word_bigram,Recall@1,0.0,,,1.0

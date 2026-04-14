@@ -1,0 +1,165 @@
+id,text,switch_ratio,switch_band,has_lingala,matrix_lang,n_switch_points,gold_id,candidate_pool_size
+cs_txt_000022,Wananchi wanataka usalama na barabara routes.,0.0,low,False,swa,0,cs_txt_000023,50
+cs_txt_000023,Wananchi wanataka usalama na barabarae routes.,0.0,low,False,swa,0,cs_txt_000022,50
+cs_txt_000040,Mkutano wa hadhara ulifanyika jana soir.,0.0,low,False,swa,0,cs_txt_000041,50
+cs_txt_000041,Mkutanoe wa hadhara ulifanyika jana soir.,0.0,low,False,swa,0,cs_txt_000040,50
+cs_txt_000277,Wananchi wanataka securite na barabara bora.,0.0,low,False,swa,0,cs_txt_000279,50
+cs_txt_000279,Wananchi wanataka securitee na bazali bora.,0.0,low,False,swa,0,cs_txt_000277,50
+cs_txt_000310,Mkutano wa hadhara batu jana soir.,0.16666666666666666,low,True,swa,2,cs_txt_000311,50
+cs_txt_000311,Mkutano wa batu batu jana soir.,0.0,low,False,swa,0,cs_txt_000310,50
+cs_txt_000371,reunion wae hadhara ulifanyika jana jioni.,0.0,low,False,swa,0,cs_txt_000372,50
+cs_txt_000372,reunion bazali hadharae ulifanyika jana jioni.,0.0,low,False,swa,0,cs_txt_000371,50
+cs_txt_000500,Serikali ilitangaza mpango batu wa ajira kwa batu.,0.0,low,False,swa,0,cs_txt_000501,50
+cs_txt_000501,Serikali ilitangaza mpango batu wae ajira kwa jeunes.,0.0,low,False,swa,0,cs_txt_000500,50
+cs_txt_000523,Bajeti ya afya imeongezeka augmente huu.,0.3333333333333333,medium,True,swa,4,cs_txt_000524,50
+cs_txt_000524,Bajetie ya afya imeongezeka augmente huu.,0.0,low,False,swa,0,cs_txt_000523,50
+cs_txt_000677,Aujourd tunaongea bazali huduma za maji ndenge.,0.0,low,False,swa,0,cs_txt_000678,50
+cs_txt_000678,Aujourd tunaongeae bazali huduma za maji mjinie.,0.0,low,False,swa,0,cs_txt_000677,50
+cs_txt_000868,Bajeti ya afya imeongezeka mwaka annee.,0.16666666666666666,low,True,swa,2,cs_txt_000869,50
+cs_txt_000869,Bajeti ya afya imeongezeka mwaka anneee.,0.0,low,False,swa,0,cs_txt_000868,50
+cs_txt_001027,Wananchi wanataka securite na barabara bora.,0.0,low,False,swa,0,cs_txt_001029,50
+cs_txt_001029,Wananchi wanataka securite soki barabara batu.,0.0,low,False,swa,0,cs_txt_001027,50
+cs_txt_001232,Aujourd tunaongea kuhusu huduma za ya mjini.,0.0,low,False,swa,0,cs_txt_001233,50
+cs_txt_001233,Aujourd tunaongea kuhusu hudumae za ya mjini.,0.0,low,False,swa,0,cs_txt_001232,50
+cs_txt_001447,Wananchi wanataka usalama na barabara routes.,0.0,low,False,swa,0,cs_txt_001449,50
+cs_txt_001449,Wananchi wanatakae usalama na barabara routese.,0.0,low,False,swa,0,cs_txt_001447,50
+cs_txt_001453,Bajeti ya batu imeongezeka augmente huu.,0.5,high,True,swa,4,cs_txt_001454,50
+cs_txt_001454,Bajeti ya batu ndenge augmente huu.,0.0,low,False,swa,0,cs_txt_001453,50
+cs_txt_001462,Wananchi wanataka usalama na ya bora.,0.16666666666666666,low,True,swa,2,cs_txt_001463,50
+cs_txt_001463,Wananchi wanataka usalama na ya bora.,0.0,low,False,swa,0,cs_txt_001462,50
+cs_txt_001507,citoyens wanataka usalama na barabara bora.,0.16666666666666666,low,False,swa,1,cs_txt_001509,50
+cs_txt_001509,citoyens wanataka usalama nae barabara bora.,0.0,low,False,swa,0,cs_txt_001507,50
+cs_txt_001627,Wananchi wanataka usalama na meilleures bora.,0.0,low,False,swa,0,cs_txt_001628,50
+cs_txt_001628,Wananchi wanataka usalama na meilleurese bora.,0.0,low,False,swa,0,cs_txt_001627,50
+cs_txt_001676,reunion wa hadhara ndenge jana jioni.,0.0,low,False,swa,0,cs_txt_001677,50
+cs_txt_001677,reunion wa hadhara ulifanyika soki jionie.,0.0,low,False,swa,0,cs_txt_001676,50
+cs_txt_001708,budget ya afya imeongezeka mwaka huu.,0.3333333333333333,medium,True,swa,2,cs_txt_001710,50
+cs_txt_001710,budget ya afya imeongezeka mwakae bazali.,0.0,low,False,swa,0,cs_txt_001708,50
+cs_txt_001715,Serikalie ilitangaza mpango nouveau wa ajira kwa vijana.,0.0,low,False,swa,0,cs_txt_001716,50
+cs_txt_001716,bazali ilitangaza mpango nouveaue wa ajira kwa vijana.,0.0,low,False,swa,0,cs_txt_001715,50
+cs_txt_002020,Mkutano wa hadhara ulifanyika hier jioni.,0.0,low,False,swa,0,cs_txt_002021,50
+cs_txt_002021,Mkutano wa hadhara ulifanyika soki jioni.,0.0,low,False,swa,0,cs_txt_002020,50
+cs_txt_002047,Wananchi wanataka soki na meilleures bora.,0.16666666666666666,low,True,swa,2,cs_txt_002049,50
+cs_txt_002049,Wananchi wanataka soki batu meilleures bora.,0.0,low,False,swa,0,cs_txt_002047,50
+cs_txt_002140,Mkutano wa hadhara ulifanyika hier jioni.,0.0,low,False,swa,0,cs_txt_002141,50
+cs_txt_002141,Mkutanoe wa hadhara ulifanyika hier jioni.,0.0,low,False,swa,0,cs_txt_002140,50
+cs_txt_002191,Leo tunaongea soki huduma za maji mjini.,0.14285714285714285,low,True,swa,2,cs_txt_002193,50
+cs_txt_002193,Leo tunaongea soki huduma za majie ndenge.,0.0,low,False,swa,0,cs_txt_002191,50
+cs_txt_002264,ya ya afya imeongezeka mwakae huu.,0.0,low,False,swa,0,cs_txt_002265,50
+cs_txt_002265,ya ya batu imeongezeka mwaka huu.,0.0,low,False,swa,0,cs_txt_002264,50
+cs_txt_002317,citoyens soki usalama na barabara bora.,0.3333333333333333,medium,True,swa,2,cs_txt_002319,50
+cs_txt_002319,citoyens soki usalama nae barabara borae.,0.0,low,False,swa,0,cs_txt_002317,50
+cs_txt_002350,Mkutano wa hadhara ulifanyika hier jioni.,0.0,low,False,swa,0,cs_txt_002351,50
+cs_txt_002351,Mkutano wa hadhara ulifanyikae hier jioni.,0.0,low,False,swa,0,cs_txt_002350,50
+cs_txt_002446,Aujourd tunaongea kuhusu huduma za maji mjini.,0.0,low,False,swa,0,cs_txt_002448,50
+cs_txt_002448,Aujourd tunaongeae kuhusue huduma za maji mjini.,0.0,low,False,swa,0,cs_txt_002446,50
+cs_txt_002698,budget ya afya imeongezeka mwaka huu.,0.3333333333333333,medium,True,swa,2,cs_txt_002700,50
+cs_txt_002700,budget ya afya bazali soki huu.,0.0,low,False,swa,0,cs_txt_002698,50
+cs_txt_002980,Mkutano wa hadhara lieu jana jioni.,0.0,low,False,swa,0,cs_txt_002982,50
+cs_txt_002982,Mkutanoe wa hadhara soki jana jioni.,0.0,low,False,swa,0,cs_txt_002980,50
+cs_txt_003016,Leo tunaongea parlons huduma za maji bazali.,0.14285714285714285,low,True,swa,1,cs_txt_003018,50
+cs_txt_003018,Leo tunaongea parlons huduma za batu bazali.,0.0,low,False,swa,0,cs_txt_003016,50
+cs_txt_003092,Leo ba parlons huduma ndenge maji mjini.,0.0,low,False,swa,0,cs_txt_003093,50
+cs_txt_003093,Leo ba parlons huduma za soki mjinie.,0.0,low,False,swa,0,cs_txt_003092,50
+cs_txt_003104,Bajeti ya ndenge imeongezeka augmente huu.,0.0,low,False,swa,0,cs_txt_003105,50
+cs_txt_003105,Bajeti ya afya imeongezekae augmente soki.,0.0,low,False,swa,0,cs_txt_003104,50
+cs_txt_003163,Bajeti ya afya imeongezeka cette huu.,0.16666666666666666,low,True,swa,2,cs_txt_003165,50
+cs_txt_003165,Bajetie ya afya imeongezeka batu huu.,0.0,low,False,swa,0,cs_txt_003163,50
+cs_txt_003343,Bajeti batu afya imeongezeka augmente huu.,0.3333333333333333,medium,True,swa,4,cs_txt_003344,50
+cs_txt_003344,Bajeti batu afya imeongezeka augmente bazali.,0.0,low,False,swa,0,cs_txt_003345,50
+cs_txt_003345,Bajeti batu afya imeongezeka augmente huu.,0.0,low,False,swa,0,cs_txt_003343,50
+cs_txt_003358,Bajeti ya soki imeongezeka augmente huu.,0.5,high,True,swa,4,cs_txt_003360,50
+cs_txt_003360,Bajetie ya soki imeongezeka augmente huu.,0.0,low,False,swa,0,cs_txt_003358,50
+cs_txt_003683,citoyens wanataka usalama nae barabara bora.,0.0,low,False,swa,0,cs_txt_003684,50
+cs_txt_003684,citoyens wanataka usalamae na barabarae bora.,0.0,low,False,swa,0,cs_txt_003683,50
+cs_txt_003784,Serikali ilitangaza mpango programme wa ajira kwa ba.,0.125,low,True,swa,1,cs_txt_003785,50
+cs_txt_003785,Serikali ilitangaza mpango programmee wa ajira kwa ba.,0.0,low,False,swa,0,cs_txt_003784,50
+cs_txt_003925,Mkutano ya hadhara lieu jana jioni.,0.16666666666666666,low,True,swa,2,cs_txt_003927,50
+cs_txt_003927,Mkutano ya ndenge lieu jana jioni.,0.0,low,False,swa,0,cs_txt_003925,50
+cs_txt_004000,Mkutano wa hadhara lieu jana jioni.,0.0,low,False,swa,0,cs_txt_004002,50
+cs_txt_004002,Mkutano wa hadharae lieu jana ndenge.,0.0,low,False,swa,0,cs_txt_004000,50
+cs_txt_004021,Leo tunaongea parlons huduma za maji mjini.,0.0,low,False,swa,0,cs_txt_004023,50
+cs_txt_004023,Leoe tunaongeae parlons huduma za maji mjini.,0.0,low,False,swa,0,cs_txt_004021,50
+cs_txt_004123,Bajeti ba afya imeongezeka mwaka annee.,0.16666666666666666,low,True,swa,2,cs_txt_004125,50
+cs_txt_004125,Bajeti ba afya imeongezeka mwaka anneee.,0.0,low,False,swa,0,cs_txt_004123,50
+cs_txt_004282,Wananchi wanataka soki na barabara routes.,0.16666666666666666,low,True,swa,2,cs_txt_004283,50
+cs_txt_004283,Wananchi wanatakae soki na barabara routes.,0.0,low,False,swa,0,cs_txt_004282,50
+cs_txt_004438,Bajeti ya sante imeongezeka mwaka huu.,0.16666666666666666,low,True,swa,2,cs_txt_004439,50
+cs_txt_004439,Bajeti ya sante ndenge mwaka huu.,0.0,low,False,swa,0,cs_txt_004438,50
+cs_txt_004483,Bajeti ya afya imeongezeka batu huu.,0.3333333333333333,medium,True,swa,4,cs_txt_004485,50
+cs_txt_004485,Bajetie ya soki imeongezeka batu huu.,0.0,low,False,swa,0,cs_txt_004483,50
+cs_txt_004537,citoyens wanataka usalama na barabara bora.,0.16666666666666666,low,False,swa,1,cs_txt_004538,50
+cs_txt_004538,citoyens wanataka usalama bazali barabara bora.,0.0,low,False,swa,0,cs_txt_004537,50
+cs_txt_004549,Serikali ilitangaza mpango nouveau wa ajira pour vijana.,0.0,low,False,swa,0,cs_txt_004550,50
+cs_txt_004550,Serikali ilitangaza mpango bazali wa ajira pour vijana.,0.0,low,False,swa,0,cs_txt_004549,50
+cs_txt_004726,Leo tunaongea kuhusu huduma za maji ville.,0.0,low,False,swa,0,cs_txt_004727,50
+cs_txt_004727,ndenge tunaongea kuhusu huduma za maji ville.,0.0,low,False,swa,0,cs_txt_004726,50
+cs_txt_004741,Leo tunaongea kuhusu services za maji mjini.,0.0,low,False,swa,0,cs_txt_004742,50
+cs_txt_004742,batu tunaongea kuhusu services za maji mjini.,0.0,low,False,swa,0,cs_txt_004741,50
+cs_txt_004747,Wananchi wanataka usalama na meilleures bora.,0.0,low,False,swa,0,cs_txt_004749,50
+cs_txt_004749,Wananchi wanataka usalamae na meilleures borae.,0.0,low,False,swa,0,cs_txt_004747,50
+cs_txt_005050,Mkutano wa hadhara ulifanyika jana soir.,0.0,low,False,swa,0,cs_txt_005051,50
+cs_txt_005051,Mkutano wa hadhara ndenge jana soir.,0.0,low,False,swa,0,cs_txt_005050,50
+cs_txt_005069,budget ya afya imeongezeka mwaka batu.,0.0,low,False,swa,0,cs_txt_005070,50
+cs_txt_005070,budget ya afya soki mwakae huu.,0.0,low,False,swa,0,cs_txt_005069,50
+cs_txt_005365,Mkutano publique hadhara ulifanyika jana jioni.,0.16666666666666666,low,False,swa,2,cs_txt_005366,50
+cs_txt_005366,Mkutano publique hadhara ulifanyikae jana jioni.,0.0,low,False,swa,0,cs_txt_005365,50
+cs_txt_005375,soki annonce ya mpya wa ajira kwa vijana.,0.0,low,False,swa,0,cs_txt_005376,50
+cs_txt_005376,Serikali batu ya mpya soki ajira kwa vijana.,0.0,low,False,swa,0,cs_txt_005375,50
+cs_txt_005608,Bajeti ya afya imeongezeka mwaka annee.,0.16666666666666666,low,True,swa,2,cs_txt_005610,50
+cs_txt_005610,Bajeti ya afyae imeongezeka mwaka anneee.,0.0,low,False,swa,0,cs_txt_005608,50
+cs_txt_005863,Bajeti ya bazali imeongezeka augmente huu.,0.5,high,True,swa,4,cs_txt_005865,50
+cs_txt_005865,Bajeti ya bazali imeongezeka augmente huu.,0.0,low,False,swa,0,cs_txt_005863,50
+cs_txt_005876,Mkutano wa hadhara ulifanyikae jana soir.,0.0,low,False,swa,0,cs_txt_005877,50
+cs_txt_005877,Mkutano wa hadhara ulifanyikae jana ndenge.,0.0,low,False,swa,0,cs_txt_005876,50
+cs_txt_006124,Serikali annonce mpango mpya wa ajira soki vijana.,0.125,low,True,swa,2,cs_txt_006125,50
+cs_txt_006125,Serikali annonce mpango mpya wa batu soki vijana.,0.0,low,False,swa,0,cs_txt_006124,50
+cs_txt_006292,Wananchi wanataka securite na barabara soki.,0.16666666666666666,low,True,swa,1,cs_txt_006293,50
+cs_txt_006293,Wananchi wanataka securite nae barabara soki.,0.0,low,False,swa,0,cs_txt_006292,50
+cs_txt_006466,Leo tunaongea kuhusu huduma za maji ville.,0.0,low,False,swa,0,cs_txt_006467,50
+cs_txt_006467,Leo tunaongea kuhusu huduma batu maji ville.,0.0,low,False,swa,0,cs_txt_006466,50
+cs_txt_006511,Leo tunaongea kuhusu services za ya mjini.,0.14285714285714285,low,True,swa,2,cs_txt_006513,50
+cs_txt_006513,Leo tunaongeae kuhusu servicese za ya mjini.,0.0,low,False,swa,0,cs_txt_006511,50
+cs_txt_006685,Mkutano wa hadhara lieu jana jioni.,0.0,low,False,swa,0,cs_txt_006686,50
+cs_txt_006686,Mkutano wa hadhara lieue jana jioni.,0.0,low,False,swa,0,cs_txt_006685,50
+cs_txt_006757,Wananchi wanataka soki na barabara bora.,0.16666666666666666,low,True,swa,2,cs_txt_006758,50
+cs_txt_006758,Wananchi wanatakae soki na barabara bora.,0.0,low,False,swa,0,cs_txt_006757,50
+cs_txt_006934,Serikali ilitangaza mpango mpya wa emploi kwa vijana.,0.125,low,False,swa,2,cs_txt_006936,50
+cs_txt_006936,Serikalie ilitangaza mpango mpya wae emploi kwa vijana.,0.0,low,False,swa,0,cs_txt_006934,50
+cs_txt_006937,Wananchi veulent soki na barabara bora.,0.16666666666666666,low,True,swa,2,cs_txt_006938,50
+cs_txt_006938,Wananchi veulent soki na barabarae bora.,0.0,low,False,swa,0,cs_txt_006937,50
+cs_txt_006971,reunion wa hadhara ulifanyikae ya jioni.,0.0,low,False,swa,0,cs_txt_006972,50
+cs_txt_006972,reunion wa hadharae ulifanyikae ya jioni.,0.0,low,False,swa,0,cs_txt_006971,50
+cs_txt_007219,Serikali ilitangaza mpango nouveau wa ajira kwa vijana.,0.0,low,False,swa,0,cs_txt_007221,50
+cs_txt_007221,Serikalie ilitangaza mpango ndenge wa ajira kwa vijana.,0.0,low,False,swa,0,cs_txt_007219,50
+cs_txt_007267,citoyens wanataka usalama na barabara bora.,0.16666666666666666,low,False,swa,1,cs_txt_007268,50
+cs_txt_007268,citoyens soki usalama na barabara bora.,0.0,low,False,swa,0,cs_txt_007269,50
+cs_txt_007269,citoyens wanataka usalama nae barabara bora.,0.0,low,False,swa,0,cs_txt_007267,50
+cs_txt_007589,Bajeti ya afya imeongezeka mwaka annee.,0.0,low,False,swa,0,cs_txt_007590,50
+cs_txt_007590,soki ya afya imeongezeka mwaka annee.,0.0,low,False,swa,0,cs_txt_007589,50
+cs_txt_007744,Serikali annonce mpango mpya wa ajira kwa ya.,0.125,low,True,swa,1,cs_txt_007745,50
+cs_txt_007745,Serikalie annonce mpango mpya wa ajira kwa ya.,0.0,low,False,swa,0,cs_txt_007744,50
+cs_txt_007756,Leo nous kuhusu huduma za maji ba.,0.14285714285714285,low,True,swa,1,cs_txt_007758,50
+cs_txt_007758,Leo nous kuhusu huduma ndenge soki ba.,0.0,low,False,swa,0,cs_txt_007756,50
+cs_txt_007945,Mkutano wa ba ulifanyika hier jioni.,0.16666666666666666,low,True,swa,2,cs_txt_007947,50
+cs_txt_007947,Mkutano wa ba ulifanyika hiere jionie.,0.0,low,False,swa,0,cs_txt_007945,50
+cs_txt_008236,Leo tunaongea parlons huduma za maji mjini.,0.0,low,False,swa,0,cs_txt_008238,50
+cs_txt_008238,Leo tunaongea parlons huduma zae ndenge mjini.,0.0,low,False,swa,0,cs_txt_008236,50
+cs_txt_008257,Wananchi wanataka securite na barabara bora.,0.0,low,False,swa,0,cs_txt_008258,50
+cs_txt_008258,Wananchi wanataka securite nae barabara bora.,0.0,low,False,swa,0,cs_txt_008257,50
+cs_txt_008264,Bajeti batu afya imeongezeka augmente huu.,0.0,low,False,swa,0,cs_txt_008265,50
+cs_txt_008265,Bajeti batu afya imeongezekae augmente huu.,0.0,low,False,swa,0,cs_txt_008264,50
+cs_txt_008323,Bajeti ya afya imeongezeka mwaka annee.,0.16666666666666666,low,True,swa,2,cs_txt_008325,50
+cs_txt_008325,Bajeti ya afya imeongezeka mwakae annee.,0.0,low,False,swa,0,cs_txt_008323,50
+cs_txt_008390,Serikali ilitangaza mpango mpya batu emploi kwa vijana.,0.0,low,False,swa,0,cs_txt_008391,50
+cs_txt_008391,batu ilitangaza mpango batu batu emploi kwa vijana.,0.0,low,False,swa,0,cs_txt_008390,50
+cs_txt_008405,Serikali bazali mpango programme wa ajira kwa vijana.,0.0,low,False,swa,0,cs_txt_008406,50
+cs_txt_008406,Serikali ilitangaza mpango programmee wa ajira ndenge vijana.,0.0,low,False,swa,0,cs_txt_008405,50
+cs_txt_008656,Aujourd tunaongea kuhusu huduma za maji mjini.,0.0,low,False,swa,0,cs_txt_008657,50
+cs_txt_008657,Aujourd tunaongea kuhusu hudumae za maji mjini.,0.0,low,False,swa,0,cs_txt_008656,50
+cs_txt_008731,Aujourd tunaongea kuhusu soki za maji mjini.,0.14285714285714285,low,True,swa,2,cs_txt_008732,50
+cs_txt_008732,Aujourd tunaongea kuhusu soki za soki mjini.,0.0,low,False,swa,0,cs_txt_008731,50
+cs_txt_008818,Bajeti ya afya imeongezeka mwaka annee.,0.16666666666666666,low,True,swa,2,cs_txt_008820,50
+cs_txt_008820,Bajeti ya afya imeongezeka mwaka ndenge.,0.0,low,False,swa,0,cs_txt_008818,50
+cs_txt_008845,Mkutano publique hadhara ulifanyika jana ba.,0.3333333333333333,medium,True,swa,3,cs_txt_008847,50
+cs_txt_008847,Mkutano publique hadhara ulifanyika janae ba.,0.0,low,False,swa,0,cs_txt_008845,50

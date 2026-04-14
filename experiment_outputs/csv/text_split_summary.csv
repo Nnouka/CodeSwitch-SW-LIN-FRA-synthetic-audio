@@ -1,0 +1,4 @@
+split,count,avg_switch_ratio,lingala_rate,avg_switch_points
+dev,900,0.041,0.176,0.41
+test,900,0.046,0.189,0.46
+train,7200,0.042,0.171,0.44
