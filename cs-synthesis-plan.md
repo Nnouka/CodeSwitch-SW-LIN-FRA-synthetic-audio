@@ -1,7 +1,9 @@
 # Full Code-Switch Synthesis Plan
 
 Date: April 13, 2026  
-Scope: End-to-end synthesis of French-Swahili-Lingala code-switched (CS) text and audio from primarily monolingual/parallel data.
+Scope: End-to-end synthesis of two separate code-switched (CS) tracks and their combined benchmark:
+- Track A: French-Swahili focus with Lingala sprinkle.
+- Track B: French-Lingala focus with Swahili sprinkle.
 
 ## 1) Goal and Success Criteria
 
@@ -9,10 +11,11 @@ Primary goal:
 - Build a reproducible data factory that outputs high-quality CS text and CS speech for downstream retrieval/ASR experiments.
 
 Success criteria:
-- CS Text: at least 8,000 usable utterances with token-level language tags and quality metadata.
-- CS Audio: at least 3,000 aligned clips with transcript and span timestamps.
+- CS Text: at least 4,000 usable utterances for Track A and at least 4,000 for Track B.
+- CS Audio: at least 1,500 aligned clips for Track A and at least 1,500 for Track B.
 - Naturalness guardrail: less than 10% of sampled outputs rejected by human review rubric.
 - Utility guardrail: synthetic data improves at least one downstream metric versus monolingual-only baseline.
+- Baseline reporting guardrail: report metrics separately for Track A, Track B, and shuffled Track A+B.
 
 ## 2) Research Basis (What this plan adopts)
 
@@ -27,7 +30,9 @@ This design combines proven ideas from prior CS generation work:
 
 ## 3.1 Required Sources
 
-- Parallel text: Gamayun Congolese Swahili-French kit.
+- Parallel text (required):
+  - Gamayun Congolese Swahili-French kit.
+  - French-Lingala parallel kit.
 - Real CS text: HateSpeech Kenya (transfer source, not target pair).
 - Monolingual speech: Waxal Lingala ASR, Waxal Swahili TTS/ASR, Common Voice French.
 - Optional lexical resources: Lingala slang list, named entities, political domain terminology.
@@ -86,20 +91,37 @@ Audio unit schema:
 
 ## 4) Synthesis Architecture Overview
 
-Two-lane generation with merge:
-- Lane A (Rule-constrained): deterministic MLF-style CS generation for control.
-- Lane B (Model-based): learned switching generator for fluency and variety.
-- Merge + rank: select best candidates by quality scoring and diversity constraints.
+Dual-track generation with shared methods:
+- Track A corpus build: French-Swahili focus with Lingala sprinkle.
+- Track B corpus build: French-Lingala focus with Swahili sprinkle.
+- Each track runs through rule-based and model-based generators, then track-specific filtering/ranking.
+- Final evaluation includes each track independently plus shuffled union (A+B).
 
 Pipeline stages:
-1. Normalize and align source corpora.
-2. Generate CS text candidates (A+B).
-3. Score, filter, deduplicate, and calibrate CS distribution.
-4. Generate CS audio from accepted text.
-5. Validate audio-text alignment and boundary quality.
-6. Package train/dev/test splits with anti-leakage controls.
+1. Normalize and align source corpora for both tracks.
+2. Generate CS text candidates separately for Track A and Track B.
+3. Score, filter, deduplicate, and calibrate distributions per track.
+4. Generate CS audio per track from accepted text.
+5. Validate audio-text alignment and boundary quality per track.
+6. Package train/dev/test splits per track and for shuffled combined benchmark.
 
 ## 5) Detailed Plan: CS Text Synthesis
+
+## 5.0 Track Definitions and Targets
+
+Track A (French-Swahili + Lingala sprinkle):
+- Primary pair: French-Swahili.
+- Sprinkle language: Lingala.
+- Target token mix band: French 45-55%, Swahili 35-45%, Lingala 5-15%.
+
+Track B (French-Lingala + Swahili sprinkle):
+- Primary pair: French-Lingala.
+- Sprinkle language: Swahili.
+- Target token mix band: French 45-55%, Lingala 35-45%, Swahili 5-15%.
+
+Generation policy:
+- Run the full T0-T4 pipeline independently for each track.
+- Keep separate IDs and manifests (`track_a_*`, `track_b_*`) before any combined benchmarking.
 
 ## 5.1 Stage T0: Normalization and Alignment
 
@@ -118,7 +140,9 @@ Exit criteria:
 ## 5.2 Stage T1: Rule-Constrained Generator (MLF + Constraints)
 
 Core idea:
-- Swahili as matrix language; French and Lingala as embedded islands.
+- Matrix/embedded language is track-specific.
+- Track A: French-Swahili matrix interplay with Lingala embedded sprinkle.
+- Track B: French-Lingala matrix interplay with Swahili embedded sprinkle.
 
 Rules:
 - Prefer switching on content words (NOUN, ADJ, selected VERB lemmas).
@@ -131,13 +155,13 @@ Rules:
 
 Algorithm:
 ```text
-for each sw-fr aligned pair:
+for each aligned pair in selected track:
   identify eligible switch anchors from POS + alignment confidence
   sample target switch count from schedule
-  replace sampled anchors with aligned FR tokens
-  inject Lingala lexical items at discourse markers/slang slots
+  perform primary-pair substitutions (fra<->swa for Track A, fra<->lin for Track B)
+  inject sprinkle-language lexical items at discourse markers/slang slots
   enforce grammar constraints and punctuation repair
-  emit candidate with lang tags and trace
+  emit candidate with lang tags, track_id, and trace
 ```
 
 Expected yield:
@@ -177,6 +201,7 @@ Validator checks after rewrite:
 - Semantic similarity >= 0.88 to source pair meaning.
 - Switch-count deviation <= 1 from target.
 - Language-ID consistency >= 95% token agreement.
+- Track distribution compliance with Section 5.0 token mix bands.
 
 ## 5.5 Stage T4: Quality Filtering and Dataset Shaping
 
@@ -187,17 +212,20 @@ Filters:
 - Domain balancing (politics, civic, daily speech, news).
 
 Distribution targets:
-- Matrix language mix:
-  - 70% Swahili matrix
-  - 20% French matrix
-  - 10% Lingala matrix (short utterances)
+- Apply track-specific token mix bands from Section 5.0.
+- Reject or downsample outputs that drift outside each track band.
 - Switch intensity bands:
   - Low 40%, Medium 40%, High 20%
 
 Output target:
-- 8k-12k high-quality CS text utterances.
+- Track A: 4k-6k high-quality CS text utterances.
+- Track B: 4k-6k high-quality CS text utterances.
 
 ## 6) Detailed Plan: CS Audio Synthesis
+
+Execution note:
+- Run A0-A4 separately for Track A and Track B.
+- Keep track-specific audio manifests before building shuffled combined benchmark sets.
 
 ## 6.1 Stage A0: Voice and Pronunciation Setup
 
@@ -270,7 +298,8 @@ Hard constraints:
 - Speaker profile separation for evaluation where possible.
 
 Recommended split:
-- Train 80%, Dev 10%, Test 10%.
+- Per-track split: Train 80%, Dev 10%, Test 10% for Track A and Track B separately.
+- Combined shuffled split: build additional Train/Dev/Test from shuffled union of accepted Track A + Track B records.
 - Build a stress-test subset with high switch intensity and named entities.
 
 ## 8) Evaluation Plan for the Synthesizer Itself
@@ -292,25 +321,40 @@ Downstream utility KPIs:
 - Delta ASR MER/WER for CS segments.
 - CS robustness score improvement from low to high switch bands.
 
+Baseline protocol (must run and report separately):
+- Baseline A-only:
+  - Train/evaluate using Track A synthetic set only.
+  - Report all text, audio, and downstream KPIs.
+- Baseline B-only:
+  - Train/evaluate using Track B synthetic set only.
+  - Report all text, audio, and downstream KPIs.
+- Baseline Combined-Shuffled:
+  - Create shuffled union of Track A and Track B synthetic sets.
+  - Train/evaluate on this mixed set and report all KPIs.
+
+Required comparison table:
+- Columns: A-only, B-only, Combined-Shuffled.
+- Rows: LID accuracy, switch-point F1, acceptability score, boundary artifact score, back-transcription WER, downstream retrieval NDCG/MRR, downstream ASR WER/MER.
+
 ## 9) Implementation Timeline (6 Weeks)
 
 Week 1:
 - Data ingestion, normalization, alignments, schema finalization.
 
 Week 2:
-- Rule-constrained text generator v1 + initial filters.
+- Rule-constrained text generator v1 for Track A and Track B + initial filters.
 
 Week 3:
-- Neural copy-switch generator v1 + merge/ranking.
+- Neural copy-switch generator v1 + track-specific merge/ranking.
 
 Week 4:
-- Span-based audio synthesis v1 + boundary smoothing.
+- Span-based audio synthesis v1 + boundary smoothing for both tracks.
 
 Week 5:
-- QC automation, human audit loop, dataset shaping.
+- QC automation, human audit loop, track-specific dataset shaping.
 
 Week 6:
-- Freeze v1 dataset, produce data cards, run downstream utility benchmark.
+- Freeze Track A and Track B datasets, produce data cards, run Baseline A-only, Baseline B-only, and Combined-Shuffled benchmarks.
 
 ## 10) Minimal Tooling Stack
 
@@ -338,17 +382,21 @@ Week 6:
 
 ## 12) Deliverables
 
-- D1: CS text corpus (jsonl + language tags + quality metadata).
-- D2: CS audio corpus (wav + transcript + span timestamps + provenance).
-- D3: Data card documenting methods, limits, and ethical use notes.
-- D4: Reproducible synthesis pipeline scripts and config files.
-- D5: Evaluation report showing synthetic-data utility and failure modes.
+- D1: Track A CS text corpus (French-Swahili focus + Lingala sprinkle).
+- D2: Track B CS text corpus (French-Lingala focus + Swahili sprinkle).
+- D3: Track A CS audio corpus (wav + transcript + span timestamps + provenance).
+- D4: Track B CS audio corpus (wav + transcript + span timestamps + provenance).
+- D5: Combined shuffled benchmark manifests and splits.
+- D6: Evaluation report with A-only, B-only, Combined-Shuffled baseline metrics.
+- D7: Data cards documenting methods, limits, and ethical use notes.
+- D8: Reproducible synthesis pipeline scripts and config files.
 
 ## 13) Immediate Execution Checklist
 
 - [ ] Finalize source licenses and redistribution constraints.
 - [ ] Implement schemas and manifest format first.
-- [ ] Build T1 rule generator and run on 500-sentence pilot.
-- [ ] Build A1 span renderer on 200-utterance pilot.
+- [ ] Build T1 rule generator for Track A and Track B; run 500-sentence pilot per track.
+- [ ] Build A1 span renderer on 200-utterance pilot per track.
 - [ ] Validate QC gates, then scale generation.
+- [ ] Compute and compare baseline metrics for A-only, B-only, and Combined-Shuffled.
 - [ ] Freeze v1 with immutable IDs and checksums.
