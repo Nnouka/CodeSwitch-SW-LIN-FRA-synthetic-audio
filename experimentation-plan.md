@@ -13,6 +13,10 @@ The central research question is:
 
 **Does code-switch-aware training improve retrieval on our French-Swahili-Lingala synthetic dataset relative to monolingual or weakly code-switch-aware baselines?**
 
+Additional mandatory question for this phase:
+
+**How does retrieval vary by query language (French, Lingala, Swahili) across three search-corpus conditions: French-Swahili with Lingala sprinkle, French-Lingala with Swahili sprinkle, and their shuffled mix?**
+
 All conclusions must be limited to the datasets used here. We will not claim that results generalize to all DRC speech, all African code-switching, or all multilingual retrieval settings.
 
 ---
@@ -109,6 +113,43 @@ We will evaluate three tasks.
 - Target: matching transcript or semantically paired text
 - Purpose: evaluate cross-modal robustness in the reverse direction
 
+## 4.1.1 Query Language Sets (Required)
+
+For all retrieval tasks, build and evaluate three query subsets:
+
+1. French queries
+2. Lingala queries
+3. Swahili queries
+
+Query-language assignment rule:
+- Assign query language by dominant token language in the query text (or transcript for audio queries), using token-level language tags.
+
+## 4.1.2 Search-Corpus Conditions (Required)
+
+Evaluate each query subset against the following search pools:
+
+1. French-Swahili based corpus with Lingala sprinkle (Track A)
+2. French-Lingala based corpus with Swahili sprinkle (Track B)
+3. Shuffled mix of Track A and Track B (Track A+B)
+
+## 4.1.3 Mandatory Evaluation Matrix
+
+Run and report the full 3 x 3 matrix below for each task (T2T, T2A, A2T):
+
+| Query language | Search corpus |
+|---|---|
+| French | Track A |
+| French | Track B |
+| French | Track A+B |
+| Lingala | Track A |
+| Lingala | Track B |
+| Lingala | Track A+B |
+| Swahili | Track A |
+| Swahili | Track B |
+| Swahili | Track A+B |
+
+No row in this matrix may be omitted from the final report.
+
 ## 4.2 Candidate Models
 
 ### Primary text encoders
@@ -160,7 +201,7 @@ Rules:
 
 ## 5.3 Retrieval Pool Construction
 
-For each test query:
+For each test query in each matrix cell (query-language subset x search-corpus condition):
 - include exactly one gold item,
 - include hard negatives from the same topic or lexical field,
 - include code-switch negatives with overlapping borrowed words but different meanings,
@@ -223,6 +264,8 @@ This will be reported for each model.
 - matrix language: Swahili / French / Lingala where present
 - language composition: bilingual versus tri-lingual items
 - modality: T2T, T2A, A2T
+- query language: French / Lingala / Swahili
+- search corpus: Track A / Track B / Track A+B
 
 ## 6.3 Why These Metrics Were Chosen
 
@@ -276,6 +319,10 @@ This is appropriate because Recall@1 reduces to a paired binary outcome.
 When comparing performance across low/medium/high switch bands:
 - use bootstrap confidence intervals within each band,
 - apply Holm-Bonferroni correction for multiple pairwise comparisons.
+
+### For query-language and search-corpus comparisons
+- For each task, compare Track A vs Track B vs Track A+B within each query language using paired bootstrap where pairing is possible by query ID.
+- Compare French vs Lingala vs Swahili query subsets within each search-corpus condition using bootstrap confidence intervals and Holm-Bonferroni correction across pairwise contrasts.
 
 ## 7.3 Effect Size Reporting
 
@@ -372,12 +419,18 @@ Every main results table must include:
 - model name,
 - training condition,
 - task,
+- query language,
+- search corpus condition,
 - MRR,
 - Recall@1,
 - nDCG@5,
 - CSRS where applicable,
 - 95% confidence intervals,
 - significance marker relative to the strongest relevant baseline.
+
+## 9.0 Required Matrix Table
+
+Before aggregate summaries, include one matrix table per task with 9 rows (French/Lingala/Swahili x Track A/Track B/Track A+B). This matrix is the primary evidence table for this update.
 
 ## 9.1 Core Comparison Table
 

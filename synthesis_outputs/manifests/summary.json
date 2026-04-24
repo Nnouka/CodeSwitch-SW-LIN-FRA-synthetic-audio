@@ -1,5 +1,5 @@
 {
-  "date": "2026-04-13",
+  "date": "2026-04-24",
   "text_records": 9000,
   "audio_records": 623,
   "text_split": {
@@ -14,7 +14,7 @@
   },
   "anti_leakage_ok": true,
   "kpi": {
-    "avg_cs_acceptability": 0.757,
+    "avg_cs_acceptability": 0.821,
     "avg_mos_proxy": 4.4,
     "avg_asr_backtrans_wer": 0.12
   }
