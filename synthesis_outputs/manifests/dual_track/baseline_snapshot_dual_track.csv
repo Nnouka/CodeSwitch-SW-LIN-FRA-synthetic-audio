@@ -1,0 +1,4 @@
+track_key,name,records,avg_cs_acceptability,avg_switch_points,fra_pct,swa_pct,lin_pct
+track_a,A_fra_swa_linspr,4000,0.956,8.241,50.41,40.04,9.56
+track_b,B_fra_lin_swaspr,4000,0.956,8.191,50.43,9.61,39.96
+combined_shuffled,AB_shuffled,8000,0.956,8.216,50.42,24.82,24.76

@@ -1,7 +1,7 @@
 # Code-Switched French-Swahili-Lingala Corpus
 
 Version: 1.0.0  
-Date: 2026-04-13  
+Date: 2026-04-24  
 License: CC-BY-4.0
 
 ## What This Release Contains
