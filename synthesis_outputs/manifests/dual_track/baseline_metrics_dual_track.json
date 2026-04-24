@@ -4,38 +4,38 @@
     "name": "A_fra_swa_linspr",
     "records": 4000,
     "avg_cs_acceptability": 0.956,
-    "avg_switch_points": 8.208,
+    "avg_switch_points": 8.241,
     "lang_pct": {
-      "fra": 50.35,
-      "swa": 40.06,
-      "lin": 9.59
+      "fra": 50.41,
+      "swa": 40.04,
+      "lin": 9.56
     }
   },
   "track_b": {
     "name": "B_fra_lin_swaspr",
     "records": 4000,
-    "avg_cs_acceptability": 0.957,
-    "avg_switch_points": 8.238,
+    "avg_cs_acceptability": 0.956,
+    "avg_switch_points": 8.191,
     "lang_pct": {
-      "fra": 50.45,
-      "swa": 9.58,
-      "lin": 39.97
+      "fra": 50.43,
+      "swa": 9.61,
+      "lin": 39.96
     }
   },
   "combined_shuffled": {
     "name": "AB_shuffled",
     "records": 8000,
     "avg_cs_acceptability": 0.956,
-    "avg_switch_points": 8.223,
+    "avg_switch_points": 8.216,
     "lang_pct": {
-      "fra": 50.4,
+      "fra": 50.42,
       "swa": 24.82,
-      "lin": 24.78
+      "lin": 24.76
     }
   },
   "artifacts": {
-    "track_a_jsonl": "C:\\cmu\\course-work\\spring-1\\applications-ai-africa\\group-work\\synthesis_outputs\\text\\dual_track\\cs_text_track_a_fra_swa_linspr.jsonl",
-    "track_b_jsonl": "C:\\cmu\\course-work\\spring-1\\applications-ai-africa\\group-work\\synthesis_outputs\\text\\dual_track\\cs_text_track_b_fra_lin_swaspr.jsonl",
-    "combined_jsonl": "C:\\cmu\\course-work\\spring-1\\applications-ai-africa\\group-work\\synthesis_outputs\\text\\dual_track\\cs_text_track_ab_shuffled.jsonl"
+    "track_a_jsonl": "c:\\cmu\\course-work\\spring-1\\applications-ai-africa\\group-work\\synthesis_outputs\\text\\dual_track\\cs_text_track_a_fra_swa_linspr.jsonl",
+    "track_b_jsonl": "c:\\cmu\\course-work\\spring-1\\applications-ai-africa\\group-work\\synthesis_outputs\\text\\dual_track\\cs_text_track_b_fra_lin_swaspr.jsonl",
+    "combined_jsonl": "c:\\cmu\\course-work\\spring-1\\applications-ai-africa\\group-work\\synthesis_outputs\\text\\dual_track\\cs_text_track_ab_shuffled.jsonl"
   }
 }
